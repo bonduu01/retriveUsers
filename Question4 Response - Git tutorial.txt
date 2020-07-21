@@ -1,0 +1,125 @@
+Git Tutorial for beginners.
+
+
+Git is defined on Wikipedia as a distributed version-control system for tracking changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its goals include speed, data integrity, and support for distributed, non-linear workflows.
+
+Git was created by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development. Its current maintainer since 2005 is Junio Hamano. 
+
+As with most other distributed version-control systems, and unlike most client–server systems, every Git directory on every computer is a full-fledged repository with complete history and full version-tracking abilities, independent of network access or a central server.
+
+Git is free and open-source software distributed under the terms of the GNU General Public License version 2.
+
+Installation of Git
+
+- To install git on your system, navigate and follow instructions on url https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+After git installation run command below to confirm installation was successful
+
+$ git --version
+
+
+First Time Setup
+
+The first thing you should do when you install Git is to set your user name and email address. This is important because every Git commit uses this information, and it’s immutably baked into the commits you start creating:
+
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
+
+Again, you need to do this only once if you pass the --global option, because then Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the --global option when you’re in that project.
+
+Getting Help
+If you ever need help while using Git, there are three equivalent ways to get the comprehensive manual page (manpage) help for any of the Git commands:
+
+$ git help <verb>
+$ git <verb> --help
+$ man git-<verb>
+
+For example, you can get the manpage help for the git config command by running this:
+
+$ git help config
+
+
+Create a project and Initializing a Repository 
+
+To create a new project run command below
+
+$ mkdir -p /app/newProject
+
+The mkdir -p commands creates an empty directory /app/newProject
+
+To activate or enable git on your new project run query below, after successfully enabling git, hidden file .git/ is created on new project root directory.
+
+$ cd /app/newProject
+$ git initial
+
+Note: The first command "cd /app/newProject" allows user to navigate to the new created project.
+
+Git Branches
+
+According to Wikipedia, Branching, in version control and software configuration management, is the duplication of an object under version control (such as a source code file or a directory tree) so that modifications can occur in parallel along multiple branches.
+
+The default branch after git initialization is the master branch, to add a branch run the command below:
+
+$ git checkout -b new_branch_name
+
+
+Implement a new feature/change on master branch
+
+To switch to master branch, run command below:
+
+$ git checkout -b master
+
+Implement a new feature/change on both master and development branch
+
+To implement or add a new feature we would add a README.md file, according to Wikipedia, A README file contains information about other files in a directory or archive of computer software. 
+It is also a form of documentation, it is usually a simple plain text file called READ.ME, README.TXT, README.md.
+
+The file's name is generally written in uppercase letters. On Unix-like systems in particular this makes it easily noticed – both because lowercase filenames are more usual, and because traditionally the ls command sorts and displays files in ASCII-code order, so that uppercase filenames appear first.
+
+Run command below to create a README.md file with contents "Hello World on Git, This is the master branch".
+
+$ git checkout master
+
+$ cat <<EOF >>/app/newProject/README.md
+Hello World on Git, This is the master branch
+EOF
+
+To confirm changes to the master branch, run command:
+
+$ git status
+
+To add changes into local repository and track changes run the command:
+
+$ git add README.md
+
+Commit code to your local repository by running the command
+
+$ git commit -m "first master branch commit"
+
+After commit code, code is updated locally and every change has been commited and tracked.
+
+By default, Git has a master branch, Usually, a branch is created to work on a new feature. Once the feature is completed, it can be merged back with the master branch and we delete the branch.
+
+For example, to leave the master branch README.md file untouched while we work on another branch called a dev branch and add a new feature, run commands below:
+
+$ git checkout -b dev
+
+The command creates a new dev branch, branch isn't empty, it inherits the master branch's README.md, the file on dev branch can be modified without affecting the master branch.
+
+Remove all contents of dev branch README.md file and replace with text "Hello World on Git, This is the dev branch" by running commands below:
+
+$ cat /dev/null > /app/newProject/README.md
+
+$ cat <<EOF >>/app/newProject/README.md
+Hello World on Git, This is the dev branch
+EOF
+
+To add changes into local repository and track changes run the command:
+
+$ git add README.md
+
+Commit code to your local dev branch repository by running the command
+
+$ git commit -m "first dev branch commit"
+
+Note: when you switch between both branches, you would observe they contain different README.md contents. So changes can be made on the dev branch without it affecting codes on the master branch.

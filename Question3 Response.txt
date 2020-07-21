@@ -1,0 +1,60 @@
+#Git Commands
+
+#Below are commands that would be run with explanations on why this approach was used.
+
+#1
+
+#Switch to master branch if branch isnt on master branch
+$ git checkout master
+
+#Command adds all changes into local repository.
+$ git add . --all
+
+#Command commits unsaved changes with description "first commit".
+$ git commit -m "first commit"
+
+#2
+
+#Command adds all changes into local repository.
+$ git add . --all
+
+#Command commits unsaved changes with description "second commit".
+$ git commit -m "second commit"
+
+#3
+
+#Switch to feature-branch or create it if branch does not exist.
+$ git checkout -b feature-branch
+
+#Command adds all changes into local repository feature-branch branch.
+$ git add . --all
+
+#Command commits uncommited changes with description "awesome feature" into feature-branch branch.
+$ git commit -m "awesome feature"
+
+#4
+
+#Command switches back to master branch
+$ git checkout master
+
+#From master branch, changes are merged into the master branch from the feature-branch i.e. combining both master and feature-branch.
+$ git merge feature-branch
+
+#5
+
+#Command switches back to master branch
+$ git checkout master
+
+#Command adds all changes into local repository master branch.
+$ git add . --all
+
+#Command commits unsaved changes with description "third commit" into master branch.
+$ git commit -m "third commit"
+
+#6
+
+#Command adds all changes into local repository master branch.
+$ git add . --all
+
+#Command commits unsaved changes with description "fourth commit" into master branch.
+$ git commit -m "fourth commit"

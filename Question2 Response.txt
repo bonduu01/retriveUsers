@@ -1,0 +1,44 @@
+To troubleshoot this issue as a root user,  below are issues I have experienced regarding high latency or slow TAT's and how to troubleshoot:
+
+Probably causes:
+
+- Insufficient space on hard disk
+- Insufficient Memory
+- Application log file size
+- Application log writing issues
+- Database related issues
+
+Below is sequence of action carried.
+
+- Advice customer to confirm internet connectivity on device used to call web application service while I call same service to confirm service availability.
+
+On linux cli run the following commands below:
+
+# View web application logs
+journalctl -u webapplication_name.service 
+
+# Comb Web Server logs for any clue on possible errors
+
+# Check status of web application or RDBMS for any hint on error
+systemctl status application_name
+systemctl status rdmbs
+
+# Troubleshoot to view resource utilization to detect any system bottlenecks by running command below:
+vmstat -S M
+
+# Run command below to confirm hard disk space availability
+df -h
+
+# In addition to running hard disk space, I would check the /tmp folder if it has enough space.
+
+# I would run command below to track memory usage, track what memory was used, memory available
+free
+
+# Or run command below:
+top
+
+# I would run command to check web application and web server application log file size
+du -h /webApplication.log 
+du -h /webserver.log
+
+# In some cases, database not properly normalized might cause delay issues when queried or if a particular JOIN sql script is badly written, or a large database with no unique index on a table frequently queried, this all might cause delay issues...These issues are all related to design issues, experienced this issuses working with startups companies years back. 
